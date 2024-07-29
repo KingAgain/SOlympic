@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {Image, Table, Tab, Tabs, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Modal, useDisclosure, ModalContent, ModalBody, ModalHeader, ModalProps, Card } from '@nextui-org/react'
+import {Image, Table, Tab, Tabs, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Modal, useDisclosure, ModalContent, ModalBody, ModalHeader, Card } from '@nextui-org/react'
 import './App.css'
 import Papa from 'papaparse'
 
@@ -9,7 +9,7 @@ function App() {
   const [playerStat, setPlayerStat] = React.useState<Map<string, number[]>>()
   const [countryStat, setCountryStat] = React.useState<Map<string, number[]>>()
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [scrollBehavior, setScrollBehavior] = React.useState<ModalProps["scrollBehavior"]>("inside");
+  const scrollBehavior = "inside";
   const [currentKey, setCurrentKey] = React.useState<string>('')
   const [currentStat, setCurrentStat] = React.useState<string[][]>([])
 
@@ -151,7 +151,7 @@ function App() {
         </Tabs>
         <Modal isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior}>
           <ModalContent>
-            {(onClose) => (
+            {() => (
               <>
                 <ModalHeader className="flex flex-col gap-1">{currentKey}</ModalHeader>
                 <ModalBody className='mb-4'>
