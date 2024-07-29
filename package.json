@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
-    "@rollup/plugin-dsv": "^3.0.4",
     "@types/papaparse": "^5.3.14",
     "autoprefixer": "^10.4.19",
     "framer-motion": "^11.3.19",
@@ -20,7 +19,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.7",
-    "vite-plugin-content": "^0.1.4",
     "vite-plugin-raw": "^1.0.3"
   },
   "devDependencies": {

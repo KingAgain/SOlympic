@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {Image, Table, Tab, Tabs, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Modal, useDisclosure, ModalContent, ModalBody, ModalHeader, Card } from '@nextui-org/react'
 import './App.css'
 import Papa from 'papaparse'
-import '../oly.csv?raw'
+import '../oly.txt'
 
 function App() {
   const [medals, setMedals] = React.useState<string[][]>([])
@@ -15,7 +15,7 @@ function App() {
   const [currentStat, setCurrentStat] = React.useState<string[][]>([])
 
   useEffect(() => {
-    fetch('../oly.csv?raw')
+    fetch('../oly.txt')
       .then((response) => response.text())
       .then((data) => {
         setMedals(Papa.parse(data, { header: false }).data as string[][])
