@@ -15,7 +15,7 @@ function App() {
   const [currentStat, setCurrentStat] = React.useState<string[][]>([])
 
   useEffect(() => {
-    fetch('../oly.csv')
+    fetch('../oly.csv?raw')
       .then((response) => response.text())
       .then((data) => {
         setMedals(Papa.parse(data, { header: false }).data as string[][])
