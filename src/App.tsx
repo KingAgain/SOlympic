@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {Image, Table, Tab, Tabs, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Modal, useDisclosure, ModalContent, ModalBody, ModalHeader, Card } from '@nextui-org/react'
 import './App.css'
 import Papa from 'papaparse'
+import '../oly.csv?raw'
 
 function App() {
   const [medals, setMedals] = React.useState<string[][]>([])
