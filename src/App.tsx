@@ -5,6 +5,7 @@ import Papa from 'papaparse'
 
 function App() {
   const [medals, setMedals] = React.useState<string[][]>([])
+  const [medalsReversed, setMedalsReversed] = React.useState<string[][]>([])
   const [medalList, setMedalList] = React.useState<(string | number)[][]>()
   const [playerStat, setPlayerStat] = React.useState<Map<string, number[]>>()
   const [countryStat, setCountryStat] = React.useState<Map<string, number[]>>()
@@ -27,6 +28,7 @@ function App() {
 
   useEffect(() => {
     if (medals.length > 0) {
+      setMedalsReversed(medals.reverse().slice(1))
       const medalsData = []
       for (const medal of medals) {
         if (medal.length > 1) {
@@ -138,6 +140,31 @@ function App() {
     )
   }
 
+  const eventColumns = [
+    { title: '名称', dataIndex: 1, key: 'name' },
+    { title: '🥇', dataIndex: 2, key: 'gold' },
+    { title: '🥈', dataIndex: 3, key: 'silver' },
+    { title: '🥉', dataIndex: 4, key: 'bronze' },
+  ]
+
+  const itemTable = (
+    <Table isStriped>
+      <TableHeader columns={eventColumns}>
+        {(column) => <TableColumn key={column.key} className='text-center'>{column.title}</TableColumn>}
+      </TableHeader>
+      <TableBody items={medalsReversed}>
+        {(item) => (
+          <TableRow key={item[0]}>
+            <TableCell className='text-center'> {item[0]} </TableCell>
+            <TableCell className='text-center'> {item[1]} {item[2]} </TableCell>
+            <TableCell className='text-center'> {item[3]} {item[4]} </TableCell>
+            <TableCell className='text-center'> {item[5]} {item[6]} </TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
+  )
+
   return (
     <div className='bg-[url(../317371.jpg)] justify-center flex'>
       <div className='w-max flex flex-col items-center max-w-[90vw]'>
@@ -148,6 +175,7 @@ function App() {
         <Tabs color="primary">
           <Tab key="country" title="国家">{countryStat && medalTable({ stat: countryStat })}</Tab>
           <Tab key="athlete" title="运动员">{playerStat && medalTable({ stat: playerStat })}</Tab>
+          <Tab key="item" title="项目">{itemTable}</Tab>
         </Tabs>
         <Modal isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior}>
           <ModalContent>
