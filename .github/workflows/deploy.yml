@@ -49,5 +49,5 @@ jobs:
           publish_dir: ./dist
     environment:
       name: production
-      url: pksai.cc 
+      url: https://pksai.cc/
           
