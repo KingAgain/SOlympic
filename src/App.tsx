@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import {Image, Table, Tab, Tabs, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Modal, useDisclosure, ModalContent, ModalBody, ModalHeader, Card } from '@nextui-org/react'
 import './App.css'
 import Papa from 'papaparse'
-import '../oly.txt'
 
 function App() {
   const [medals, setMedals] = React.useState<string[][]>([])
@@ -15,7 +14,7 @@ function App() {
   const [currentStat, setCurrentStat] = React.useState<string[][]>([])
 
   useEffect(() => {
-    fetch('../oly.txt')
+    fetch('/oly.csv')
       .then((response) => response.text())
       .then((data) => {
         setMedals(Papa.parse(data, { header: false }).data as string[][])
@@ -143,7 +142,7 @@ function App() {
     <div className='bg-[url(../317371.jpg)] justify-center flex'>
       <div className='w-max flex flex-col items-center max-w-[90vw]'>
         <Card className='py-2 m-4 w-full flex-row justify-center'>
-          <Image src="../logo.png" height={"1.75rem"} />
+          <Image src="/logo.png" height={"1.75rem"} />
           <h1 className="text-center text-lg px-2">南的奥运奖牌榜</h1>
         </Card>
         <Tabs color="primary">
